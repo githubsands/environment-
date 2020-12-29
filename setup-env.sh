@@ -1,3 +1,23 @@
+OS="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     OS=Linux;;
+    Darwin*)    OS=Mac;;
+    CYGWIN*)    OS=Cygwin;;
+    MINGW*)     OS=MinGw;;
+    *)          OS="UNKNOWN:${unameOut}"
+esac
+
+if [ $OS -eq "Mac"];
+then
+    #TODO change on distro
+    yum -y install neovim
+fi
+
+if [ $OS -eq "Linux"];
+then
+    brew install neovim
+fi
+
 git clone https://github.com/tcltk/tcl
 cd tcl
 ./configure
@@ -8,7 +28,6 @@ sh autogen.sh
 ./configure
 make
 
-brew install neovim
 (cd config && cp * ~)
 
 chsh -s /bin/zsh
