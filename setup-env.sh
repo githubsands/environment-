@@ -11,4 +11,5 @@ make
 brew install neovim
 (cd config && cp * ~)
 
+chsh -s /bin/zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
