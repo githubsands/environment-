@@ -1,21 +1,18 @@
 OS="$(uname -s)"
-case "${unameOut}" in
+case "${OS}" in
     Linux*)     OS=Linux;;
     Darwin*)    OS=Mac;;
-    CYGWIN*)    OS=Cygwin;;
-    MINGW*)     OS=MinGw;;
-    *)          OS="UNKNOWN:${unameOut}"
+    *)          OS="UNKNOWN:${OS}"
 esac
 
 if [ $OS -eq "Mac"];
 then
-    #TODO change on distro
-    yum -y install neovim
+    brew install neovim
 fi
 
 if [ $OS -eq "Linux"];
 then
-    brew install neovim
+    yum -y install neovim
 fi
 
 git clone https://github.com/tcltk/tcl
