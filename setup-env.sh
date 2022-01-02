@@ -35,3 +35,5 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 git clone https://github.com/rust-analyzer/rust-analyzer && cd rust-analyzer
 cargo xtask install --server
 pip install pynvim
+
+rustup component add rls

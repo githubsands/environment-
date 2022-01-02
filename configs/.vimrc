@@ -84,12 +84,21 @@ let g:airline#extension#tabline#enabled = 1
 "***************
 nnoremap <C-p> :FuzzyOpen<CR>
 
-"*****************************************************************************
-"" golang
-"*****************************************************************************a
+"*************************************************************************
+"" Rust
+"*************************************************************************
+Plug 'rust-lang/rust.vim'
+let g:rustfmt_autosave = 1
+let g:rustc_path = $HOME."/usr/local/bin/rustc"
+let g:rustfmt_autosave = 1
 
+"*************************************************************************
+"" Golang
+"*************************************************************************
+" https://cs.opensource.google/go/x/tools/+/refs/tags/gopls/v0.7.4:gopls/doc/vim.md
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+let g:go_gopls_enabled = 1
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 let g:go_highlight_structs = 1
@@ -99,10 +108,14 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 syntax on
 
-" https://cs.opensource.google/go/x/tools/+/refs/tags/gopls/v0.7.4:gopls/doc/vim.md
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-let g:go_gopls_enabled = 1
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -160,17 +173,6 @@ Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 " python
 " Plug 'davidhalter/jedi-vim'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
-
-" vim-go
-" run :GoBuild or :GoTestCompile based on the go file
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#test#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
-  endif
-endfunction
 
 "*****************************************************************************
 "*****************************************************************************
@@ -463,14 +465,11 @@ else
       set term=xterm-256color
     endif
   endif
-  
 endif
-
 
 if &term =~ '256color'
   set t_ut=
 endif
-
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
@@ -534,10 +533,10 @@ augroup vimrc-remember-cursor-position
 augroup END
 
 "" txt
-augroup vimrc-wrapping
-  autocmd!
-  autocmd BufRead,BufNewFile *.txt call s:setupWrapping()
-augroup END
+"" augroup vimrc-wrapping
+"" autocmd!
+"" autocmd BufRead,BufNewFile *.txt call s:setupWrapping()
+"" augroup END
 
 "" make/cmake
 augroup vimrc-make-cmake
