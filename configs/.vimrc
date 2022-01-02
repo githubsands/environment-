@@ -1,7 +1,3 @@
-"*****************************************************************************
-"" Vim-PLug core
-"*****************************************************************************
-
 if !has('nvim')
     set ttymouse=xterm2
 endif
@@ -30,7 +26,6 @@ endif
 
 " Required:
 call plug#begin(expand('~/.vim/plugged'))
-
 
 "**************************************************
 set timeoutlen=1000
@@ -66,16 +61,24 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'kana/vim-fakeclip'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lock file'}
+Plug 'neoclide/coc.nvim', {'do':'yarn install --frozen-lock file'}
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'go': ['gopls']
     \ }
+Plug 'tomlion/vim-solidity'
+Plug 'baabelfish/nvim-nim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'neovim/nvim-lspconfig'
+
+" Run gofmt on save
+autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
 
 let g:airline#extension#tabline#enabled = 1
-
-
-
 "***************
 " fuzzy
 "***************
@@ -96,8 +99,10 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 syntax on
 
+" https://cs.opensource.google/go/x/tools/+/refs/tags/gopls/v0.7.4:gopls/doc/vim.md
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+let g:go_gopls_enabled = 1
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -153,7 +158,7 @@ autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
 Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 
 " python
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 
 " vim-go
@@ -778,7 +783,6 @@ else
   let g:airline_symbols.linenr = ''
 endif
 
-
 cnoremap <Down> <Nop>
 cnoremap <Left> <Nop>
 cnoremap <Right> <Nop>
@@ -803,6 +807,8 @@ vnoremap <F1> <ESC>
 
 nnoremap ; :
 
+set noundofile
+
 nnoremap <Leader>z <C-w><C-w>
 ""noremap <Leader>s <C-w>k
 ""nnoremap <Leader>h <C-w>h
@@ -810,3 +816,36 @@ nnoremap <Leader>z <C-w><C-w>
 "
 "
 command! CopyBuffer let @+ = expand('%:p')
+
+"" nim
+let g:ale_linters = {
+\   'nim': ['nimlsp', 'nimcheck'],
+\}
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'nim': ['nimpretty'],
+\}
+let g:ale_linters_explicit = 1
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_fix_on_save = 1
+let g:ale_sign_error = '✖✖'
+let g:ale_sign_warning = '⚠⚠'
+highlight ALEErrorSign guifg=Red
+highlight ALEWarningSign guifg=Yellow
+
+"" get rid of white spaces: :%s/\s\+$//
+"" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Using Lua functions
+" TODO: NOTE: NOT implemented
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>`
