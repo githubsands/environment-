@@ -10,6 +10,7 @@ esac
 if [ $OS -eq "Mac"];
 then
     brew install neovim
+    brew install rust
 fi
 
 if [ $OS -eq "Linux"];
@@ -35,5 +36,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 git clone https://github.com/rust-analyzer/rust-analyzer && cd rust-analyzer
 cargo xtask install --server
 pip install pynvim
+
+curl -L https://nixos.org/nix/install | sh
 
 rustup component add rls
