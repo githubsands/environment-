@@ -67,7 +67,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ 'python': ['/usr/local/bin/pyls'],
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'go': ['gopls']
+    \ 'go': ['~/go/bin/gopls']
     \ }
 Plug 'tomlion/vim-solidity'
 Plug 'baabelfish/nvim-nim'
@@ -79,14 +79,11 @@ Plug 'neovim/nvim-lspconfig'
 "" Configure LanguageClient
 "*************************************************************************
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'rust': ['rust-analyzer'],
     \ 'python': ['/usr/local/bin/pyls'],
     \ 'go': ['gopls']
     \ }
 "*************************************************************************
-
-" Run gofmt on save
-autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
 
 let g:airline#extension#tabline#enabled = 1
 "***************
@@ -117,6 +114,9 @@ let g:go_highlight_functions = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 syntax on
+
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
 
 function! s:build_go_files()
   let l:file = expand('%')

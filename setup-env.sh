@@ -39,4 +39,9 @@ pip install pynvim
 
 curl -L https://nixos.org/nix/install | sh
 
+# LSPs
+
+npm i -g pyright
+
+
 rustup component add rls
