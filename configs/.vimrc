@@ -127,17 +127,18 @@ function! s:build_go_files()
   endif
 endfunction
 
-if isdirectory('/usr/local/opt/fzf')
-  Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-else
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
-  Plug 'junegunn/fzf.vim'
-endif
-let g:make = 'gmake'
-if exists('make')
-        let g:make = 'make'
-endif
-Plug 'Shougo/vimproc.vim', {'do': g:make}
+"""if isdirectory('/usr/local/opt/fzf')
+""" Plug '/usr/local/opt/fzf'
+""" Plug 'junegunn/fzf.vim'
+""" else
+""" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+""" Plug 'junegunn/fzf.vim'
+""" endif
+
+""" if exists('make')
+""" let g:make = 'make'
+""" endif
+""" Plug 'Shougo/vimproc.vim', {'do': g:make}
 
 if v:version >= 703
   Plug 'Shougo/vimshell.vim'
@@ -154,15 +155,6 @@ Plug 'honza/vim-snippets'
 
 "" Color
 Plug 'tomasr/molokai'
-
-"""testing
-"*****************************************************************************
-Plug 'janko/vim-test'
-nmap <silent> t<C-n> :TestNearest<CR>
-nmap <silent> t<C-f> :TestFile<CR>
-nmap <silent> t<C-s> :TestSuite<CR>
-nmap <silent> t<C-l> :TestLast<CR>
-nmap <silent> t<C-g> :TestVisit<CR>
 
 let test#python#runner = 'pytest'
 "*****************************************************************************
@@ -224,7 +216,7 @@ set visualbell
 set ruler
 ""set backspace=indent,eol,start
 set laststatus=2
-set undofile
+""" set undofile
 
 ""encoding
 "" set encoding=utf-8
