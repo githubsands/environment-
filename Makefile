@@ -10,7 +10,7 @@ update_vimrc:
 	cp configs/.vimrc ~/.vimrc
 
 update_sr:
-	cp configs/configs ~/.configs/surfraw/conf
+	cp configs/conf ~/.config/surfraw/
 
 local_update_vimrc:
 	rm -rf ~/environment-/configs/.vimrc
