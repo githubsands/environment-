@@ -7,10 +7,22 @@ case "${OS}" in
     *)          OS="UNKNOWN:${OS}"
 esac
 
+npm i -g pyright
+
 if [ $OS -eq "Mac"];
 then
     brew install neovim
     brew install rust
+    brew install gpg
+    brew install rust
+    brew install golang
+    brew install solidity
+    brew install typescript
+    brew install wscat
+    brew install kafkacat
+    brew install gpg
+    brew install docker
+    brew install kubernetes
 fi
 
 if [ $OS -eq "Linux"];
@@ -39,9 +51,6 @@ pip install pynvim
 
 curl -L https://nixos.org/nix/install | sh
 
-# LSPs
-
 npm i -g pyright
-
 
 rustup component add rls
