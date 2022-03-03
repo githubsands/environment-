@@ -11,11 +11,9 @@ if [ $OS -eq "Mac"];
 then
     brew install neovim
     brew install rust
-fi
-
-if [ $OS -eq "Linux"];
-then
-    yum -y install neovim
+    brew install nimble
+    npm install -g wscat
+    brew install kubectx
 fi
 
 git clone https://github.com/tcltk/tcl
@@ -43,5 +41,10 @@ curl -L https://nixos.org/nix/install | sh
 
 npm i -g pyright
 
-
+brew install nimble
 rustup component add rls
+
+# websocket client
+npm install -g wscat
+
+# ka
