@@ -9,6 +9,10 @@ update_vimrc:
 	rm -rf ~/.vimrc
 	cp configs/.vimrc ~/.vimrc
 
+update_vim:
+	rm -rf ~/configs/neovim
+	cp -R configs/neovim ~/.configs/neovim
+
 update_sr:
 	cp configs/conf ~/.config/surfraw/
 
