@@ -8,6 +8,8 @@ endif
 
 let vimplug_exists=expand('~/.vim/autoload/plug.vim')
 
+let g:polyglot_disabled = ['python']
+
 let g:vim_bootstrap_langs = "c,go,lisp,python,rust"
 let g:vim_bootstrap_editor = "vim"
 
@@ -30,6 +32,7 @@ call plug#begin(expand('~/.vim/plugged'))
 "**************************************************
 set timeoutlen=1000
 set ttimeoutlen=0
+set number
 "*************************************************
 
 "*****************************************************************************
@@ -61,7 +64,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'kana/vim-fakeclip'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'neoclide/coc.nvim', {'do':'yarn install --frozen-lock file'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
@@ -70,10 +73,11 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'go': ['~/go/bin/gopls']
     \ }
 Plug 'tomlion/vim-solidity'
-Plug 'baabelfish/nvim-nim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'neovim/nvim-lspconfig'
+Plug 'rust-lang/rust.vim',         { 'for': 'rust' }
+Plug 'rhysd/rust-doc.vim'
 
 "*************************************************************************
 "" Configure LanguageClient
@@ -94,8 +98,6 @@ nnoremap <C-p> :FuzzyOpen<CR>
 "*************************************************************************
 "" Rust
 "*************************************************************************
-Plug 'rust-lang/rust.vim'
-let g:rustfmt_autosave = 1
 let g:rustc_path = $HOME."/usr/local/bin/rustc"
 let g:rustfmt_autosave = 1
 
