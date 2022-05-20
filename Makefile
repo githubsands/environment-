@@ -16,6 +16,10 @@ update_vim:
 update_sr:
 	cp configs/conf ~/.config/surfraw/
 
+update_zsh:
+	cp configs/.zshrc ~/.zshrc
+	cp configs/.zshenv ~/.zshenv
+
 local_update_vimrc:
 	rm -rf ~/environment-/configs/.vimrc
 	cp ~/.vimrc ~/environment-/configs/.vimrc
