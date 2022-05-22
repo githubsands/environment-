@@ -78,6 +78,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'rust-lang/rust.vim',         { 'for': 'rust' }
 Plug 'rhysd/rust-doc.vim'
+Plug 'vyperlang/vim-vyper'
 
 "*************************************************************************
 "" Configure LanguageClient
