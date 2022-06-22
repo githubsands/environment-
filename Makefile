@@ -10,9 +10,9 @@ update_vimrc:
 	cp configs/.vimrc ~/.vimrc
 
 .PHONY:
-update_vim:
-	rm -rf ~/configs/neovim
-	cp -R configs/neovim ~/.configs/neovim
+update_neovim:
+	rm -rf ~/.config/nvim
+	cp -R configs/neovim ~/.config/nvim
 
 .PHONY:
 update_sr:
