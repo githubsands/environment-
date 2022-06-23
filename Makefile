@@ -1,4 +1,5 @@
-# updates local .tmux.conf
+# run setup.sh - may not be fully automated
+
 .PHONY:
 update_tmux:
 	rm -rf ~/.tmux.conf
@@ -27,3 +28,8 @@ update_zsh:
 local_update_vimrc:
 	rm -rf ~/environment-/configs/.vimrc
 	cp ~/.vimrc ~/environment-/configs/.vimrc
+
+.PHONY:
+local_update_tmux:
+	rm -rf ~/environment-/configs/.tmux.conf
+	cp ~/.tmux.conf ~/environment-/configs/.tmux.conf
