@@ -8,6 +8,9 @@ brew install docker
 brew install kubernetes
 brew install golang
 brew install rust
+brew install python
+brew install ag
+brew install gpg
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
