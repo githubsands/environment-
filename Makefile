@@ -30,6 +30,7 @@ local_update_vimrc:
 	cp ~/.vimrc ~/environment-/configs/.vimrc
 
 .PHONY:
+# NOTE: tmux prefix will not work if any line within .tmux.conf does not work
 local_update_tmux:
 	rm -rf ~/environment-/configs/.tmux.conf
 	cp ~/.tmux.conf ~/environment-/configs/.tmux.conf
