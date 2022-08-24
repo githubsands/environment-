@@ -25,6 +25,10 @@ update_zsh:
 	cp configs/.zshenv ~/.zshenv
 
 .PHONY:
+update_commands:
+	(cd cmds /usr/local/bin)
+
+.PHONY:
 update_from_local_vimrc:
 	rm -rf ~/environment-/configs/.vimrc
 	cp ~/.vimrc ~/environment-/configs/.vimrc
