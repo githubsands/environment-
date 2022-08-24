@@ -13,6 +13,7 @@ brew install kubernetes
 brew install golang
 brew install rust
 brew install python
+brew install fzf
 brew install ag
 brew install gpg
 brew install robotsandpencils/made/xcodes
