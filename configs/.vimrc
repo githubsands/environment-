@@ -79,6 +79,8 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'rust-lang/rust.vim',         { 'for': 'rust' }
 Plug 'rhysd/rust-doc.vim'
 Plug 'vyperlang/vim-vyper'
+Plug 'github/copilot.vim'
+Plug 'kkvh/vim-docker-tools'
 
 "*************************************************************************
 "" Configure LanguageClient
@@ -853,3 +855,7 @@ nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>`
+
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+inoremap jj <ESC>

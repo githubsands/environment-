@@ -11,6 +11,7 @@ brew install rust
 brew install python
 brew install ag
 brew install gpg
+brew install robotsandpencils/made/xcodes
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
@@ -25,3 +26,17 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 git config --global user.email ${EMAIL}
 git config --global user.name ${NAME}
+
+xcodes install 10.2.1 # <- needs to be done manually
+
+echo "
+{
+  "languageserver": {
+    "go": {
+      "command": "/Users/$USER/go/bin/gopls",
+      "rootPatterns": ["go.mod"],
+      "trace.server": "verbose",
+      "filetypes": ["go"]
+    }
+  }
+}" >> ~/.config/nvim/coc-settings.json

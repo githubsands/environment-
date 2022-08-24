@@ -25,12 +25,12 @@ update_zsh:
 	cp configs/.zshenv ~/.zshenv
 
 .PHONY:
-local_update_vimrc:
+update_from_local_vimrc:
 	rm -rf ~/environment-/configs/.vimrc
 	cp ~/.vimrc ~/environment-/configs/.vimrc
 
 .PHONY:
 # NOTE: tmux prefix will not work if any line within .tmux.conf does not work
-local_update_tmux:
+update_from_local_tmux:
 	rm -rf ~/environment-/configs/.tmux.conf
 	cp ~/.tmux.conf ~/environment-/configs/.tmux.conf
