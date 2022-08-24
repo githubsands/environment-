@@ -1,0 +1,5 @@
+#!/bin/zsh
+# usuage ./getpod applabel namespace
+#
+POD_NAME=$(kubectl get pod -l app=$1 -o jsonpath={.items..metadata.name}) -n=$2
+echo ${POD_NAME}
