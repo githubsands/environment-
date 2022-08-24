@@ -858,4 +858,6 @@ nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>`
 
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
+"" remap ESC and get rid of ESC
 inoremap jj <ESC>
+inoremap <esc> <NOP>

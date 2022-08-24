@@ -1,6 +1,10 @@
 if [ -z ${EMAIL}]; then echo "EMAIL is unset"; exit; fi
 if [ -z ${NAME}]; then echo "NAME is unset"; exit; fi
 
+PLATFORM=$(uname)
+
+if [[ "$PLATFORM" == Darwin ]]; then
+
 brew install npm
 brew install nvm
 brew install rustup
@@ -12,6 +16,9 @@ brew install python
 brew install ag
 brew install gpg
 brew install robotsandpencils/made/xcodes
+
+xcodes install 10.2.1 # <- needs to be done manually
+fi
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
@@ -26,8 +33,6 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 git config --global user.email ${EMAIL}
 git config --global user.name ${NAME}
-
-xcodes install 10.2.1 # <- needs to be done manually
 
 echo "
 {
