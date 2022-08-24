@@ -2,6 +2,10 @@
 export ZSH="/Users/$USER/.oh-my-zsh"
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 
+alias git='g'
+alias kubectl='g'
+alias docker='d'
+
 plugins=(
     git
     zsh-autosuggestions
