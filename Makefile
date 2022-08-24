@@ -26,7 +26,7 @@ update_zsh:
 
 .PHONY:
 update_commands:
-	(cd cmds /usr/local/bin)
+	(cd cmds && cp * /usr/local/bin)
 
 .PHONY:
 update_from_local_vimrc:
