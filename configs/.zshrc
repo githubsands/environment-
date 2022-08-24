@@ -2,8 +2,9 @@
 export ZSH="/Users/$USER/.oh-my-zsh"
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 
+alias v='nvim'
 alias git='g'
-alias kubectl='g'
+alias kubectl='k'
 alias docker='d'
 
 plugins=(
