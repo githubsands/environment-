@@ -1,0 +1,14 @@
+# alpinemachine is useful to seach for apk packages needed for certain integrations
+
+FROM alpine:latest
+
+USER root
+
+RUN apk update && apk add zsh
+RUN sed -i 's/https/http/' /etc/apk/repositories
+
+WORKDIR /usr/local/bin
+
+RUN echo "sleep 5000000s" >>  osrun.sh && chmod u+x osrun.sh
+
+ENTRYPOINT /usr/local/bin/osrun.sh
