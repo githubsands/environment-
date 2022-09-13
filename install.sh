@@ -5,6 +5,8 @@ PLATFORM=$(uname)
 
 if [[ "$PLATFORM" == Darwin ]]; then
 
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
 brew install npm
 brew install nvm
 brew install rustup
@@ -17,9 +19,15 @@ brew install fzf
 brew install ag
 brew install gpg
 brew install robotsandpencils/made/xcodes
+brew install tmux
+brew install ccat
+brew install wget
 
 xcodes install 10.2.1 # <- needs to be done manually
 fi
+
+wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+sh install.sh
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
@@ -37,14 +45,5 @@ git config --global user.name ${NAME}
 
 env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest && mv lf /usr/local/bin
 
-echo "
-{
-  "languageserver": {
-    "go": {
-      "command": "/Users/$USER/go/bin/gopls",
-      "rootPatterns": ["go.mod"],
-      "trace.server": "verbose",
-      "filetypes": ["go"]
-    }
-  }
-}" >> ~/.config/nvim/coc-settings.json
+mkdir -p ~/.config/nvim
+cp init.vim /Users/${USER}/.config/nvim
