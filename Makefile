@@ -38,3 +38,7 @@ update_from_local_vimrc:
 update_from_local_tmux:
 	rm -rf ~/environment-/configs/.tmux.conf
 	cp ~/.tmux.conf ~/environment-/configs/.tmux.conf
+
+.PHONY:
+update_zsh_from_local:
+	cp ~/.zshrc ~/environment-/configs/.zshrc
