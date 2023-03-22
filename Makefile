@@ -14,9 +14,14 @@ update_vimrc:
 	cp configs/.vimrc ~/.vimrc
 
 .PHONY:
-update_neovim:
+update_neovim_vimscript:
 	rm -rf ~/.config/nvim
 	cp -R configs/neovim ~/.config/nvim
+
+.PHONY:
+update_neovim_lua:
+	rm -rf ~/.config/nvim
+	cp -R configs/nvim ~/.config/nvim
 
 .PHONY:
 update_sr:
