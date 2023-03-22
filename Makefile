@@ -22,6 +22,10 @@ update_neovim_vimscript:
 	rm -rf ~/.config/nvim
 	cp -R configs/neovim ~/.config/nvim
 
+.PHONY:
+update_coc_from_local:
+	cp ~/.config/coc-settings.json ~/env/environment-/configs/coc-settings.json
+
 # TODO: Lua is broken.
 .PHONY:
 update_vim_vimscript_complete: update_init.vim update_neovim_vimscript
