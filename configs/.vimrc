@@ -86,7 +86,7 @@ Plug 'kkvh/vim-docker-tools'
 "" Configure LanguageClient
 "*************************************************************************
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rust-analyzer'],
+    \ 'rust': ['/Users/ryanvacek/.cargo/bin/rust-analyzer'],
     \ 'python': ['/usr/local/bin/pyls'],
     \ 'go': ['gopls']
     \ }
@@ -198,6 +198,7 @@ call plug#end()
 filetype plugin indent on
 
 ""tabs
+set redrawtime=10000
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -331,6 +332,11 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> L :call <SID>dump_coc_commands()<CR>
+
+function! s:dump_coc_commands()
+    echom "gd: coc-definition, gy coc-type-definition, gi coc-implementation, gr coc-references"
+endfunction
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -461,7 +467,7 @@ else
 
   " IndentLine
   let g:indentLine_enabled = 1
-  let g:indentLine_concealcursor = 0
+  "" let g:indentLine_concealcursor = 0
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
 
@@ -861,3 +867,6 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 "" remap ESC and get rid of ESC
 inoremap jj <ESC>
 inoremap <esc> <NOP>
+
+"" quickfix
+autocmd FileType qf resize 1 "" set quick fix window to size 1

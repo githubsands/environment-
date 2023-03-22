@@ -14,10 +14,19 @@ update_vimrc:
 	cp configs/.vimrc ~/.vimrc
 
 .PHONY:
+update_init.vim:
+	cp init.vim /Users/${USER}/.config/nvim
+
+.PHONY:
 update_neovim_vimscript:
 	rm -rf ~/.config/nvim
 	cp -R configs/neovim ~/.config/nvim
 
+# TODO: Lua is broken.
+.PHONY:
+update_vim_vimscript_complete: update_init.vim update_neovim_vimscript
+
+# TODO: Lua is broken.
 .PHONY:
 update_neovim_lua:
 	rm -rf ~/.config/nvim
@@ -38,8 +47,8 @@ update_commands:
 
 .PHONY:
 update_from_local_vimrc:
-	rm -rf ~/environment-/configs/.vimrc
-	cp ~/.vimrc ~/environment-/configs/.vimrc
+	rm -rf ~/env/environment-/configs/.vimrc
+	cp ~/.vimrc ~/env/environment-/configs/.vimrc
 
 .PHONY:
 # NOTE: tmux prefix will not work if any line within .tmux.conf does not work
