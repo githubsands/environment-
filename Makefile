@@ -1,6 +1,9 @@
 # run setup.sh - may not be fully automated
 
 .PHONY:
+install: install.sh
+
+.PHONY:
 update_tmux:
 	rm -rf ~/.tmux.conf
 	cp configs/.tmux.conf ~/.tmux.conf
