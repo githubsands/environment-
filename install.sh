@@ -7,6 +7,8 @@ if [[ "$PLATFORM" == Darwin ]]; then
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+pip3 install --user pynvim
+
 brew install npm
 brew install nvm
 brew install rustup
