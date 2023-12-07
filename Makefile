@@ -9,6 +9,12 @@ update_tmux:
 	cp configs/.tmux.conf ~/.tmux.conf
 
 .PHONY:
+update_tmux_local:
+	rm -rf configs/.tmux.conf
+	cp ~/.tmux.conf configs/.tmux.conf
+	git add configs/.tmux.conf
+	
+.PHONY:
 update_vimrc:
 	rm -rf ~/.vimrc
 	cp configs/.vimrc ~/.vimrc
