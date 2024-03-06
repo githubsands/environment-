@@ -37,8 +37,11 @@ rustup component add clippy
 rustup component add rustfmt
 rustup component add rust-src
 
+chsh -s $(which zsh)
+
 sh <(curl -L https://nixos.org/nix/install)
 
+chsh -s $(which zsh)
 git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
@@ -48,4 +51,5 @@ git config --global user.name ${NAME}
 env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest && mv lf /usr/local/bin
 
 mkdir -p ~/.config/nvim
-cp init.vim /Users/${USER}/.config/nvim
+cp init.lua /Users/${USER}/.config/nvim
+pip3 install --user pynvim
