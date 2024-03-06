@@ -1,3 +1,0 @@
-SURFRAW_graphical_browser=/Applications/Firefox.app/Contents/MacOs/firefox
-SURFRAW_text_browser=/usr/local/bin/lynx
-SURFRAW_graphical=yes
