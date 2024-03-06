@@ -9,6 +9,10 @@ reset-lua:
 	./reset-lua.sh
 
 .PHONY:
+install-lua:
+	./install-lua.sh
+
+.PHONY:
 update_tmux:
 	rm -rf ~/.tmux.conf
 	cp configs/.tmux.conf ~/.tmux.conf

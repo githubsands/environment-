@@ -49,6 +49,7 @@ git config --global user.email ${EMAIL}
 git config --global user.name ${NAME}
 
 env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest && mv lf /usr/local/bin
+curl -sS https://webi.sh/nerdfont | sh
 
 mkdir -p ~/.config/nvim
 cp init.lua /Users/${USER}/.config/nvim
