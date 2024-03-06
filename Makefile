@@ -3,6 +3,11 @@
 .PHONY:
 install: install.sh
 
+# reset-lua breaks the lua environment
+.PHONY:
+reset-lua:
+	./reset-lua.sh
+
 .PHONY:
 update_tmux:
 	rm -rf ~/.tmux.conf
