@@ -13,6 +13,16 @@ install-lua:
 	./install-lua.sh
 
 .PHONY:
+update_lua:
+	rm -rf ~/init.lua
+	cp init.lua ~/.config/nvim/init.lua
+
+.PHONY:
+update_init_lua_local:
+	rm -rf ~/.config/nvim/init.lua
+	cp ~/init.lua ~/.config/nvim/init.lua
+
+.PHONY:
 update_tmux:
 	rm -rf ~/.tmux.conf
 	cp configs/.tmux.conf ~/.tmux.conf

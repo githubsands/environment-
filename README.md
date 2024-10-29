@@ -1,6 +1,6 @@
 # LUA 
 
-lua bootstraps from: `~/.config/nvim/lua.init` not ~/.vimrc
+lua bootstraps from: `~/.config/nvim/lua.init` not `~/.vimrc`
 
 ## PACKER - package management
 
